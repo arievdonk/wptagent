@@ -629,7 +629,7 @@ class DevtoolsBrowser(object):
             if not self.job['keep_lighthouse_screenshots']:
                 command.extend(['--skip-audits', 'screenshot-thumbnails'])
             if self.options.android:
-                command.extend(['--form-factor', 'none'])
+                command.extend(['--form-factor', 'mobile'])
                 command.extend(['--screenEmulation.disabled'])
                 if 'user_agent_string' in self.job:
                     sanitized_user_agent = re.sub(r'[^a-zA-Z0-9_\-.;:/()\[\] ]+', '', self.job['user_agent_string'])
