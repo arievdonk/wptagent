@@ -630,11 +630,13 @@ class DevtoolsBrowser(object):
                 command.extend(['--skip-audits', 'screenshot-thumbnails'])
             if self.options.android:
                 command.extend(['--form-factor', 'none'])
+                command.extend(['--screenEmulation.disabled'])
                 if 'user_agent_string' in self.job:
                     sanitized_user_agent = re.sub(r'[^a-zA-Z0-9_\-.;:/()\[\] ]+', '', self.job['user_agent_string'])
                     command.append('--chrome-flags="--user-agent=\'{0}\'"'.format(sanitized_user_agent))
             elif 'mobile' not in self.job or not self.job['mobile']:
                 command.extend(['--form-factor', 'desktop'])
+                command.extend(['--screenEmulation.disabled'])
             if len(task['block']):
                 for pattern in task['block']:
                     pattern = "'" + pattern.replace("'", "'\\''") + "'"
